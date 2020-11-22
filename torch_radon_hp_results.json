@@ -1,0 +1,41 @@
+{
+    "library": "TorchRadon half",
+    "batch_size": 32,
+    "warmup": 50,
+    "repeats": 250,
+    "gpu": "GeForce GTX 1650",
+    "results": [
+        {
+            "task": "parallel forward",
+            "num angles": 256,
+            "det count": 256,
+            "time": 0.5158963203430176,
+            "fps": 15506.991782148842
+        },
+        {
+            "task": "parallel backward",
+            "num angles": 256,
+            "det count": 256,
+            "time": 0.5197572708129883,
+            "fps": 15391.800075228668
+        },
+        {
+            "task": "fanbeam forward",
+            "num angles": 256,
+            "det count": 256,
+            "source distance": 256,
+            "detector distance": 256,
+            "time": 0.4810311794281006,
+            "fps": 16630.938579722053
+        },
+        {
+            "task": "fanbeam backward",
+            "num angles": 256,
+            "det count": 256,
+            "source distance": 256,
+            "detector distance": 256,
+            "time": 0.49134278297424316,
+            "fps": 16281.91209316973
+        }
+    ]
+}
