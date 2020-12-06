@@ -1,24 +1,20 @@
+import ctypes
+import sys
+from pyronn.ct_reconstruction.helpers.trajectories import circular_trajectory
+from pyronn.ct_reconstruction.helpers.phantoms import shepp_logan
+from pyronn.ct_reconstruction.geometry.geometry_fan_2d import GeometryFan2D
+from pyronn.ct_reconstruction.layers.backprojection_2d import fan_backprojection2d
+from pyronn.ct_reconstruction.layers.projection_2d import fan_projection2d
+from pyronn.ct_reconstruction.geometry.geometry_parallel_2d import GeometryParallel2D
+from pyronn.ct_reconstruction.layers.backprojection_2d import parallel_backprojection2d
+from pyronn.ct_reconstruction.layers.projection_2d import parallel_projection2d
+import json
+import time
+import tensorflow as tf
+import numpy as np
 import os
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import numpy as np
-import tensorflow as tf
-import time
-import json
-
-from pyronn.ct_reconstruction.layers.projection_2d import parallel_projection2d
-from pyronn.ct_reconstruction.layers.backprojection_2d import parallel_backprojection2d
-from pyronn.ct_reconstruction.geometry.geometry_parallel_2d import GeometryParallel2D
-
-from pyronn.ct_reconstruction.layers.projection_2d import fan_projection2d
-from pyronn.ct_reconstruction.layers.backprojection_2d import fan_backprojection2d
-from pyronn.ct_reconstruction.geometry.geometry_fan_2d import GeometryFan2D
-
-from pyronn.ct_reconstruction.helpers.phantoms import shepp_logan
-from pyronn.ct_reconstruction.helpers.trajectories import circular_trajectory
-
-import sys
-import ctypes
+# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 def get_gpu_name():
@@ -41,19 +37,25 @@ def get_gpu_name():
     return name.split(b'\0', 1)[0].decode()
 
 
-def benchmark(f, x, warmup, repeats):
+def benchmark(f, x, warmup, repeats, min_time):
     for _ in range(warmup):
         y = f(x)
 
+    count = 0
     s = time.time()
-    for _ in range(repeats):
+    while True:
         y = f(x)
-    execution_time = time.time() - s
+        count += 1
+        e = time.time()
+        if count >= repeats and (e-s) >= min_time:
+            break
 
-    return execution_time, y
+    mean_execution_time = (time.time() - s)/count
+
+    return mean_execution_time
 
 
-def create_parallel_geometry(det_count, num_angles):
+def create_parallel_geometry(size, det_count, num_angles):
     # Detector Parameters:
     detector_shape = det_count
     detector_spacing = 1
@@ -63,14 +65,14 @@ def create_parallel_geometry(det_count, num_angles):
     angular_range = np.pi
 
     # create Geometry class
-    geometry = GeometryParallel2D(volume_shape, volume_spacing, detector_shape, detector_spacing, number_of_projections,
+    geometry = GeometryParallel2D([size, size], [1, 1], detector_shape, detector_spacing, number_of_projections,
                                   angular_range)
     geometry.set_trajectory(circular_trajectory.circular_trajectory_2d(geometry))
 
     return geometry
 
 
-def create_fanbeam_geometry(det_count, num_angles, source_dist, det_dist):
+def create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist):
     # Detector Parameters:
     detector_shape = det_count
     detector_spacing = 1
@@ -82,117 +84,111 @@ def create_fanbeam_geometry(det_count, num_angles, source_dist, det_dist):
     source_detector_distance = source_dist + det_dist
 
     # create Geometry class
-    geometry = GeometryFan2D(volume_shape, volume_spacing, detector_shape, detector_spacing, number_of_projections,
+    geometry = GeometryFan2D([size, size], [1, 1], detector_shape, detector_spacing, number_of_projections,
                              angular_range, source_detector_distance, source_dist)
     geometry.set_trajectory(circular_trajectory.circular_trajectory_2d(geometry))
 
     return geometry
 
 
-def bench_parallel_forward(phantom, det_count, num_angles, warmup, repeats):
-    geometry = create_parallel_geometry(det_count, num_angles)
+def bench_parallel_forward(batch, size, det_count, num_angles, *bench_args):
+    with tf.device('/GPU:0'):
+        phantom = tf.random.normal((batch, size, size))
+    geometry = create_parallel_geometry(size, det_count, num_angles)
 
-    f = lambda x: parallel_projection2d(x, geometry)
+    def f(x): return parallel_projection2d(x, geometry)
 
-    return benchmark(f, phantom, warmup, repeats)
+    return benchmark(f, phantom, *bench_args)
 
 
-def bench_parallel_backward(phantom, det_count, num_angles, warmup, repeats):
-    geometry = create_parallel_geometry(det_count, num_angles)
+def bench_parallel_backward(batch, size, det_count, num_angles, *bench_args):
+    with tf.device('/GPU:0'):
+        phantom = tf.random.normal((batch, size, size))
+    geometry = create_parallel_geometry(size, det_count, num_angles)
 
     sino = parallel_projection2d(phantom, geometry)
-    f = lambda x: parallel_backprojection2d(x, geometry)
+    def f(x): return parallel_backprojection2d(x, geometry)
 
-    return benchmark(f, sino, warmup, repeats)
-
-
-def bench_fanbeam_forward(phantom, det_count, num_angles, source_dist, det_dist, warmup, repeats):
-    geometry = create_fanbeam_geometry(det_count, num_angles, source_dist, det_dist)
-
-    f = lambda x: fan_projection2d(x, geometry)
-
-    return benchmark(f, phantom, warmup, repeats)
+    return benchmark(f, sino, *bench_args)
 
 
-def bench_fanbeam_backward(phantom, det_count, num_angles, source_dist, det_dist, warmup, repeats):
-    geometry = create_fanbeam_geometry(det_count, num_angles, source_dist, det_dist)
+def bench_fanbeam_forward(batch, size, det_count, num_angles, source_dist, det_dist, *bench_args):
+    with tf.device('/GPU:0'):
+        phantom = tf.random.normal((batch, size, size))
+    geometry = create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist)
+
+    def f(x): return fan_projection2d(x, geometry)
+
+    return benchmark(f, phantom, *bench_args)
+
+
+def bench_fanbeam_backward(batch, size, det_count, num_angles, source_dist, det_dist, *bench_args):
+    with tf.device('/GPU:0'):
+        phantom = tf.random.normal((batch, size, size))
+    geometry = create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist)
 
     sino = fan_projection2d(phantom, geometry)
-    f = lambda x: fan_backprojection2d(x, geometry)
+    def f(x): return fan_backprojection2d(x, geometry)
 
-    return benchmark(f, sino, warmup, repeats)
+    return benchmark(f, sino, *bench_args)
 
 
 with open("../config.json") as f:
     config = json.load(f)
 
-batch_size = config["batch size"]
 warmup = config["warmup"]
-repeats = config["repeats"]
-
-# load phantom
-phantom = np.load("../" + config["input"])
-
-# define volume
-volume_size = phantom.shape[0]
-volume_shape = [volume_size, volume_size]
-volume_spacing = [1, 1]
-
-# add bach dimension and repeat to match batch size
-phantom = np.expand_dims(phantom, axis=0)
-phantom = np.vstack([phantom] * batch_size)
-print(phantom.shape)
+min_repeats = config["min_repeats"]
+min_time = config["min_time"]
+bench_args = (warmup, min_repeats, min_time)
 
 # Place phantom on the GPU
-with tf.device('/GPU:0'):
-    phantom = tf.convert_to_tensor(phantom, dtype=tf.float32)
+# with tf.device('/GPU:0'):
+#     phantom = tf.convert_to_tensor(phantom, dtype=tf.float32)
 
 gpu_name = get_gpu_name()
-print(f"Running benchmarks on {gpu_name}")
+gpu_encoded = gpu_name.lower().replace(" ", "_")
+print(f"Running benchmarks on {gpu_name} ({gpu_encoded})")
 
 print("\n")
 results = []
 for task in config["tasks"]:
-    print(f"Benchmarking task '{task['task']}'")
+    bs = [task["batch_size"], task["size"]]
+    print(f"Benchmarking task '{task['task']}', batch size: { task['batch_size']}, size: {task['size']}")
 
     if task["task"] == "parallel forward":
-        exec_time, y = bench_parallel_forward(phantom, task["num angles"], task["det count"], warmup, repeats)
+        exec_time = bench_parallel_forward(*bs, task["num_angles"], task["det_count"], *bench_args)
     elif task["task"] == "parallel backward":
-        exec_time, y = bench_parallel_backward(phantom, task["num angles"], task["det count"], warmup, repeats)
+        exec_time = bench_parallel_backward(*bs, task["num_angles"], task["det_count"], *bench_args)
     elif task["task"] == "fanbeam forward":
-        exec_time, y = bench_fanbeam_forward(phantom,
-                                             task["num angles"], task["det count"],
-                                             task["source distance"], task["detector distance"],
-                                             warmup, repeats)
+        exec_time = bench_fanbeam_forward(*bs,
+                                          task["num_angles"], task["det_count"],
+                                          task["source_distance"], task["detector_distance"],
+                                          *bench_args)
     elif task["task"] == "fanbeam backward":
-        exec_time, y = bench_fanbeam_backward(phantom,
-                                              task["num angles"], task["det count"],
-                                              task["source distance"], task["detector distance"],
-                                              warmup, repeats)
+        exec_time = bench_fanbeam_backward(*bs,
+                                           task["num_angles"], task["det_count"],
+                                           task["source_distance"], task["detector_distance"],
+                                           *bench_args)
     else:
         print(f"ERROR Unknown task '{task['task']}'")
+        continue
 
     print("Execution time:", exec_time)
-    fps = (batch_size * repeats) / exec_time
-    print("FPS:", fps)
-    np.save(task["output"], y[0])
 
     res = dict()
     for k in task:
-        if k != "output":
-            res[k] = task[k]
+        res[k] = task[k]
 
     res["time"] = exec_time
-    res["fps"] = fps
     results.append(res)
     print("")
 
-with open("../pyronn_results.json", "w") as f:
+with open(f"../results/pyronn_{gpu_encoded}.json", "w") as f:
     config = json.dump({
-        "library": "pyronn",
-        "batch_size": config["batch size"],
+        "library": "Pyronn",
         "warmup": config["warmup"],
-        "repeats": config["repeats"],
+        "min_repeats": config["min_repeats"],
+        "min_time": config["min_time"],
         "gpu": gpu_name,
 
         "results": results
