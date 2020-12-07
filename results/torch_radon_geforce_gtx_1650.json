@@ -13,7 +13,7 @@
             "detector_distance": 32,
             "num_angles": 32,
             "source_distance": 32,
-            "time": 6.56567022611787e-05
+            "time": 6.461536636898749e-05
         },
         {
             "size": 384,
@@ -23,7 +23,7 @@
             "detector_distance": 384,
             "num_angles": 384,
             "source_distance": 384,
-            "time": 0.01702152628476928
+            "time": 0.01696532964706421
         },
         {
             "size": 192,
@@ -31,7 +31,7 @@
             "batch_size": 32,
             "num_angles": 192,
             "task": "parallel backward",
-            "time": 0.0021277880161366565
+            "time": 0.002097686065123385
         },
         {
             "size": 64,
@@ -41,7 +41,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.00021922337469490986
+            "time": 0.0002156747999974495
         },
         {
             "size": 96,
@@ -51,7 +51,7 @@
             "detector_distance": 96,
             "num_angles": 96,
             "source_distance": 96,
-            "time": 0.00031763064544759154
+            "time": 0.00031306986638008727
         },
         {
             "size": 64,
@@ -59,7 +59,7 @@
             "batch_size": 512,
             "num_angles": 64,
             "task": "parallel backward",
-            "time": 0.0014460973480383463
+            "time": 0.0013954212356890952
         },
         {
             "size": 64,
@@ -69,7 +69,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0005908987252206786
+            "time": 0.0005698411053924421
         },
         {
             "size": 64,
@@ -79,7 +79,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0014894015736491855
+            "time": 0.0014502129532621521
         },
         {
             "size": 96,
@@ -87,7 +87,7 @@
             "batch_size": 32,
             "num_angles": 96,
             "task": "parallel forward",
-            "time": 0.00030581232240076096
+            "time": 0.0003024192737151594
         },
         {
             "size": 512,
@@ -97,7 +97,7 @@
             "detector_distance": 512,
             "num_angles": 512,
             "source_distance": 512,
-            "time": 0.04165837022124744
+            "time": 0.041315375781450114
         },
         {
             "size": 64,
@@ -107,7 +107,7 @@
             "num_angles": 64,
             "source_distance": 64,
             "batch_size": 16,
-            "time": 8.253241787966753e-05
+            "time": 7.850982902966736e-05
         },
         {
             "size": 64,
@@ -117,7 +117,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.00012447440508499887
+            "time": 0.00012147413283162223
         },
         {
             "size": 384,
@@ -125,7 +125,7 @@
             "batch_size": 32,
             "num_angles": 384,
             "task": "parallel forward",
-            "time": 0.017930473600115095
+            "time": 0.018139434897381325
         },
         {
             "size": 64,
@@ -133,7 +133,7 @@
             "batch_size": 64,
             "num_angles": 64,
             "task": "parallel forward",
-            "time": 0.00020866759799874175
+            "time": 0.0002015110871232064
         },
         {
             "size": 64,
@@ -141,7 +141,7 @@
             "batch_size": 128,
             "num_angles": 64,
             "task": "parallel forward",
-            "time": 0.00036627073424881656
+            "time": 0.00036451930919112745
         },
         {
             "size": 64,
@@ -151,7 +151,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0003110242145041916
+            "time": 0.00030599021514791735
         },
         {
             "size": 64,
@@ -159,7 +159,7 @@
             "batch_size": 96,
             "num_angles": 64,
             "task": "parallel backward",
-            "time": 0.000299391953791848
+            "time": 0.0002908724418138612
         },
         {
             "size": 32,
@@ -167,7 +167,7 @@
             "batch_size": 32,
             "num_angles": 32,
             "task": "parallel forward",
-            "time": 6.401071241770255e-05
+            "time": 6.125505654091515e-05
         },
         {
             "size": 192,
@@ -177,7 +177,7 @@
             "detector_distance": 192,
             "num_angles": 192,
             "source_distance": 192,
-            "time": 0.0022439024373554863
+            "time": 0.002224135504828559
         },
         {
             "size": 64,
@@ -185,7 +185,7 @@
             "batch_size": 192,
             "num_angles": 64,
             "task": "parallel backward",
-            "time": 0.000560237237911921
+            "time": 0.0005574499617186411
         },
         {
             "size": 96,
@@ -195,7 +195,7 @@
             "detector_distance": 96,
             "num_angles": 96,
             "source_distance": 96,
-            "time": 0.0003274550996891564
+            "time": 0.000328113682313854
         },
         {
             "size": 64,
@@ -205,7 +205,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.00020900872454876845
+            "time": 0.00021371977576681195
         },
         {
             "size": 64,
@@ -215,7 +215,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0005585643944727511
+            "time": 0.0005656030215280839
         },
         {
             "size": 256,
@@ -225,7 +225,7 @@
             "detector_distance": 256,
             "num_angles": 256,
             "source_distance": 256,
-            "time": 0.004834232643304184
+            "time": 0.004893349574736653
         },
         {
             "size": 64,
@@ -233,7 +233,7 @@
             "num_angles": 64,
             "task": "parallel backward",
             "batch_size": 4,
-            "time": 6.513934137921832e-05
+            "time": 7.339278231657071e-05
         },
         {
             "size": 64,
@@ -241,7 +241,7 @@
             "batch_size": 256,
             "num_angles": 64,
             "task": "parallel backward",
-            "time": 0.0007429746426586588
+            "time": 0.0007275116454039266
         },
         {
             "size": 128,
@@ -251,7 +251,7 @@
             "detector_distance": 128,
             "num_angles": 128,
             "source_distance": 128,
-            "time": 0.000673247397940969
+            "time": 0.0006692936001804196
         },
         {
             "size": 256,
@@ -261,7 +261,7 @@
             "detector_distance": 256,
             "num_angles": 256,
             "source_distance": 256,
-            "time": 0.0051292952944020755
+            "time": 0.005081883290918862
         },
         {
             "size": 64,
@@ -269,7 +269,7 @@
             "batch_size": 96,
             "num_angles": 64,
             "task": "parallel forward",
-            "time": 0.0002846752041647522
+            "time": 0.00028341887638069123
         },
         {
             "size": 128,
@@ -277,7 +277,7 @@
             "batch_size": 32,
             "num_angles": 128,
             "task": "parallel forward",
-            "time": 0.0006391427390170731
+            "time": 0.0006330405005925818
         },
         {
             "size": 64,
@@ -287,7 +287,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0004037801147431366
+            "time": 0.00039251797614703934
         },
         {
             "size": 64,
@@ -295,7 +295,7 @@
             "batch_size": 384,
             "num_angles": 64,
             "task": "parallel backward",
-            "time": 0.0010915690246808482
+            "time": 0.0010546976280131958
         },
         {
             "size": 64,
@@ -303,7 +303,7 @@
             "batch_size": 192,
             "num_angles": 64,
             "task": "parallel forward",
-            "time": 0.0005316767265714029
+            "time": 0.0005275805707369255
         },
         {
             "size": 64,
@@ -313,7 +313,7 @@
             "num_angles": 64,
             "source_distance": 64,
             "batch_size": 4,
-            "time": 6.652481048852772e-05
+            "time": 6.271884204578072e-05
         },
         {
             "size": 64,
@@ -323,7 +323,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0007732142322802145
+            "time": 0.0007517651771825262
         },
         {
             "size": 256,
@@ -331,7 +331,7 @@
             "batch_size": 32,
             "num_angles": 256,
             "task": "parallel backward",
-            "time": 0.0049211562031144475
+            "time": 0.004885017406195402
         },
         {
             "size": 32,
@@ -341,7 +341,7 @@
             "detector_distance": 32,
             "num_angles": 32,
             "source_distance": 32,
-            "time": 6.411959190006652e-05
+            "time": 6.122501997520999e-05
         },
         {
             "size": 384,
@@ -351,7 +351,7 @@
             "detector_distance": 384,
             "num_angles": 384,
             "source_distance": 384,
-            "time": 0.017497224407596188
+            "time": 0.017634636919263383
         },
         {
             "size": 512,
@@ -359,7 +359,7 @@
             "batch_size": 32,
             "num_angles": 512,
             "task": "parallel backward",
-            "time": 0.040664015277739496
+            "time": 0.04036917994099279
         },
         {
             "size": 64,
@@ -369,7 +369,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.00030011670555963677
+            "time": 0.000296845511964369
         },
         {
             "size": 64,
@@ -377,7 +377,7 @@
             "num_angles": 64,
             "task": "parallel forward",
             "batch_size": 4,
-            "time": 6.723326347165592e-05
+            "time": 6.49902594241975e-05
         },
         {
             "size": 64,
@@ -385,7 +385,7 @@
             "batch_size": 256,
             "num_angles": 64,
             "task": "parallel forward",
-            "time": 0.0007069174907016727
+            "time": 0.0006966628746655566
         },
         {
             "size": 512,
@@ -395,7 +395,7 @@
             "detector_distance": 512,
             "num_angles": 512,
             "source_distance": 512,
-            "time": 0.03988267883421883
+            "time": 0.03967035189270973
         },
         {
             "size": 64,
@@ -403,7 +403,7 @@
             "num_angles": 64,
             "task": "parallel backward",
             "batch_size": 16,
-            "time": 8.053059239263868e-05
+            "time": 7.766233953002122e-05
         },
         {
             "size": 64,
@@ -413,7 +413,7 @@
             "num_angles": 64,
             "source_distance": 64,
             "batch_size": 16,
-            "time": 8.280753994591369e-05
+            "time": 8.046585607267784e-05
         },
         {
             "size": 64,
@@ -421,7 +421,7 @@
             "batch_size": 32,
             "num_angles": 64,
             "task": "parallel backward",
-            "time": 0.00011928200158654714
+            "time": 0.00011977936034460276
         },
         {
             "size": 128,
@@ -429,7 +429,7 @@
             "batch_size": 32,
             "num_angles": 128,
             "task": "parallel backward",
-            "time": 0.0006695172872888036
+            "time": 0.0006634071291394435
         },
         {
             "size": 64,
@@ -437,7 +437,7 @@
             "batch_size": 384,
             "num_angles": 64,
             "task": "parallel forward",
-            "time": 0.001022590254957203
+            "time": 0.001016384508551621
         },
         {
             "size": 192,
@@ -447,7 +447,7 @@
             "detector_distance": 192,
             "num_angles": 192,
             "source_distance": 192,
-            "time": 0.0021101575360519473
+            "time": 0.0020970133104348324
         },
         {
             "size": 192,
@@ -455,7 +455,7 @@
             "batch_size": 32,
             "num_angles": 192,
             "task": "parallel forward",
-            "time": 0.00197473427319037
+            "time": 0.0019594548637964135
         },
         {
             "size": 64,
@@ -465,7 +465,7 @@
             "num_angles": 64,
             "source_distance": 64,
             "batch_size": 4,
-            "time": 6.878097235493972e-05
+            "time": 6.49104563428197e-05
         },
         {
             "size": 64,
@@ -475,7 +475,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0007487075057572234
+            "time": 0.0007413486822260051
         },
         {
             "size": 64,
@@ -483,7 +483,7 @@
             "batch_size": 512,
             "num_angles": 64,
             "task": "parallel forward",
-            "time": 0.001351575335940799
+            "time": 0.0013474346748713788
         },
         {
             "size": 256,
@@ -491,7 +491,7 @@
             "batch_size": 32,
             "num_angles": 256,
             "task": "parallel forward",
-            "time": 0.004680173196525217
+            "time": 0.004658703031486639
         },
         {
             "size": 512,
@@ -499,7 +499,7 @@
             "batch_size": 32,
             "num_angles": 512,
             "task": "parallel forward",
-            "time": 0.04620003700256348
+            "time": 0.04837883894260113
         },
         {
             "size": 96,
@@ -507,7 +507,7 @@
             "batch_size": 32,
             "num_angles": 96,
             "task": "parallel backward",
-            "time": 0.00031765663492045
+            "time": 0.00031076671915664816
         },
         {
             "size": 64,
@@ -515,7 +515,7 @@
             "batch_size": 128,
             "num_angles": 64,
             "task": "parallel backward",
-            "time": 0.00038560160437459785
+            "time": 0.0003764645160456196
         },
         {
             "size": 64,
@@ -523,7 +523,7 @@
             "batch_size": 64,
             "num_angles": 64,
             "task": "parallel backward",
-            "time": 0.000214388962982654
+            "time": 0.000206146949513921
         },
         {
             "size": 384,
@@ -531,7 +531,7 @@
             "batch_size": 32,
             "num_angles": 384,
             "task": "parallel backward",
-            "time": 0.016963696157610095
+            "time": 0.017129840916150236
         },
         {
             "size": 64,
@@ -541,7 +541,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.00012854577532843813
+            "time": 0.00012737973281658994
         },
         {
             "size": 64,
@@ -551,7 +551,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0011225633818114466
+            "time": 0.0010946530803072473
         },
         {
             "size": 64,
@@ -561,7 +561,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0010863648198357258
+            "time": 0.0010806368462670539
         },
         {
             "size": 64,
@@ -569,7 +569,7 @@
             "num_angles": 64,
             "batch_size": 16,
             "task": "parallel forward",
-            "time": 8.104478793520156e-05
+            "time": 7.994557226000006e-05
         },
         {
             "size": 64,
@@ -579,7 +579,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0003896741721398218
+            "time": 0.00038465521885798525
         },
         {
             "size": 64,
@@ -587,7 +587,7 @@
             "batch_size": 32,
             "num_angles": 64,
             "task": "parallel forward",
-            "time": 0.0001246630060675732
+            "time": 0.0001200021374719437
         },
         {
             "size": 128,
@@ -597,7 +597,7 @@
             "detector_distance": 128,
             "num_angles": 128,
             "source_distance": 128,
-            "time": 0.0007141600742029551
+            "time": 0.0006958320218475622
         },
         {
             "size": 32,
@@ -605,7 +605,7 @@
             "batch_size": 32,
             "num_angles": 32,
             "task": "parallel backward",
-            "time": 6.505833017574186e-05
+            "time": 6.289833263291933e-05
         },
         {
             "size": 64,
@@ -615,7 +615,7 @@
             "detector_distance": 64,
             "num_angles": 64,
             "source_distance": 64,
-            "time": 0.0014551289210560851
+            "time": 0.0014353055767843288
         }
     ]
 }
