@@ -1,585 +1,585 @@
 {
-  "warmup": 5,
-  "min_repeats": 15,
-  "min_time": 1.0,
+  "warmup": 10,
+  "min_repeats": 10,
+  "min_time": 2.0,
   "tasks": [
     {
-      "source_distance": 64,
-      "batch_size": 32,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
-      "batch_size": 32,
-      "det_count": 64,
-      "task": "parallel forward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "det_count": 64,
+      "size": 32,
       "task": "parallel backward",
-      "batch_size": 4,
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 256,
-      "det_count": 256,
-      "task": "parallel forward",
-      "size": 256,
-      "num_angles": 256
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 96,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "batch_size": 256,
-      "det_count": 64,
-      "task": "parallel backward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 96,
-      "det_count": 64,
-      "task": "parallel forward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 128,
-      "det_count": 64,
-      "task": "parallel backward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
       "batch_size": 256,
       "det_count": 32,
-      "task": "parallel backward",
-      "size": 32,
       "num_angles": 32
     },
     {
-      "batch_size": 256,
-      "det_count": 192,
-      "task": "parallel forward",
-      "size": 192,
-      "num_angles": 192
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 192,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
       "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 128,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
-      "source_distance": 512,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 512,
-      "det_count": 512,
-      "size": 512,
-      "num_angles": 512,
-      "task": "fanbeam forward"
-    },
-    {
-      "batch_size": 128,
-      "det_count": 64,
-      "task": "parallel forward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "source_distance": 512,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 512,
-      "det_count": 512,
-      "size": 512,
-      "task": "fanbeam backward",
-      "num_angles": 512
-    },
-    {
-      "batch_size": 384,
-      "det_count": 64,
-      "task": "parallel backward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "source_distance": 96,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 96,
-      "det_count": 96,
-      "size": 96,
-      "task": "fanbeam backward",
-      "num_angles": 96
-    },
-    {
-      "batch_size": 512,
-      "det_count": 64,
-      "task": "parallel backward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 256,
-      "det_count": 128,
-      "task": "parallel backward",
-      "size": 128,
-      "num_angles": 128
-    },
-    {
-      "det_count": 64,
-      "batch_size": 16,
-      "task": "parallel forward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 384,
-      "det_count": 64,
-      "task": "parallel forward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 256,
-      "det_count": 96,
-      "task": "parallel forward",
-      "size": 96,
-      "num_angles": 96
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 96,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
-      "source_distance": 128,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 128,
-      "det_count": 128,
-      "size": 128,
-      "task": "fanbeam backward",
-      "num_angles": 128
-    },
-    {
-      "source_distance": 96,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 96,
-      "det_count": 96,
-      "size": 96,
-      "num_angles": 96,
-      "task": "fanbeam forward"
-    },
-    {
-      "det_count": 64,
-      "task": "parallel backward",
-      "batch_size": 16,
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 256,
-      "det_count": 64,
-      "task": "parallel forward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "source_distance": 192,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 192,
-      "det_count": 192,
-      "size": 192,
-      "task": "fanbeam backward",
-      "num_angles": 192
-    },
-    {
-      "batch_size": 256,
-      "det_count": 512,
-      "task": "parallel backward",
-      "size": 512,
-      "num_angles": 512
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
-      "batch_size": 256,
-      "det_count": 192,
-      "task": "parallel backward",
-      "size": 192,
-      "num_angles": 192
-    },
-    {
-      "batch_size": 256,
-      "det_count": 96,
-      "task": "parallel backward",
-      "size": 96,
-      "num_angles": 96
-    },
-    {
-      "batch_size": 96,
-      "det_count": 64,
-      "task": "parallel backward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 128,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "batch_size": 192,
-      "det_count": 64,
-      "task": "parallel backward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "source_distance": 256,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 256,
-      "det_count": 256,
-      "size": 256,
-      "num_angles": 256,
-      "task": "fanbeam forward"
-    },
-    {
-      "source_distance": 64,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
       "batch_size": 4,
       "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
-      "batch_size": 64,
+      "detector_distance": 64,
+      "det_spacing": 2.0,
       "det_count": 64,
-      "task": "parallel forward",
-      "size": 64,
+      "source_distance": 64,
       "num_angles": 64
     },
     {
-      "source_distance": 64,
-      "batch_size": 192,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
       "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 64,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
+      "task": "parallel backward",
       "batch_size": 192,
       "det_count": 64,
-      "task": "parallel forward",
-      "size": 64,
       "num_angles": 64
     },
     {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "batch_size": 128,
+      "det_spacing": 2.0,
+      "det_count": 64,
       "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "size": 64,
+      "det_count": 64,
+      "num_angles": 64,
       "batch_size": 384,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
+      "task": "parallel forward"
+    },
+    {
       "size": 64,
+      "batch_size": 128,
+      "det_count": 64,
       "num_angles": 64,
-      "task": "fanbeam forward"
+      "task": "parallel forward"
     },
     {
-      "source_distance": 64,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "batch_size": 16,
-      "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 512,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "source_distance": 384,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 384,
-      "det_count": 384,
-      "size": 384,
-      "num_angles": 384,
-      "task": "fanbeam forward"
-    },
-    {
-      "batch_size": 64,
-      "det_count": 64,
-      "task": "parallel backward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 32,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "source_distance": 32,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 32,
-      "det_count": 32,
-      "size": 32,
-      "task": "fanbeam backward",
-      "num_angles": 32
-    },
-    {
-      "batch_size": 256,
-      "det_count": 384,
-      "task": "parallel backward",
-      "size": 384,
-      "num_angles": 384
-    },
-    {
-      "source_distance": 384,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 384,
-      "det_count": 384,
-      "size": 384,
-      "task": "fanbeam backward",
-      "num_angles": 384
-    },
-    {
-      "source_distance": 64,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "batch_size": 16,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "batch_size": 256,
-      "det_count": 512,
-      "task": "parallel forward",
-      "size": 512,
-      "num_angles": 512
-    },
-    {
-      "source_distance": 256,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 256,
-      "det_count": 256,
-      "size": 256,
-      "task": "fanbeam backward",
-      "num_angles": 256
-    },
-    {
-      "source_distance": 64,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "batch_size": 4,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "batch_size": 256,
-      "det_count": 256,
-      "task": "parallel backward",
-      "size": 256,
-      "num_angles": 256
-    },
-    {
-      "source_distance": 32,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 32,
-      "det_count": 32,
-      "size": 32,
-      "num_angles": 32,
-      "task": "fanbeam forward"
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "source_distance": 192,
-      "batch_size": 256,
-      "det_spacing": 2.0,
-      "detector_distance": 192,
-      "det_count": 192,
       "size": 192,
+      "batch_size": 256,
+      "det_count": 192,
       "num_angles": 192,
-      "task": "fanbeam forward"
+      "task": "parallel forward"
     },
     {
+      "size": 96,
       "batch_size": 256,
-      "det_count": 32,
-      "task": "parallel forward",
-      "size": 32,
-      "num_angles": 32
+      "det_count": 96,
+      "num_angles": 96,
+      "task": "parallel forward"
     },
     {
-      "source_distance": 128,
-      "batch_size": 256,
-      "det_spacing": 2.0,
+      "task": "fanbeam backward",
       "detector_distance": 128,
-      "det_count": 128,
       "size": 128,
-      "num_angles": 128,
-      "task": "fanbeam forward"
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 384,
       "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 64,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "task": "fanbeam backward",
-      "num_angles": 64
-    },
-    {
-      "source_distance": 64,
-      "batch_size": 512,
-      "det_spacing": 2.0,
-      "detector_distance": 64,
-      "det_count": 64,
-      "size": 64,
-      "num_angles": 64,
-      "task": "fanbeam forward"
-    },
-    {
-      "batch_size": 512,
-      "det_count": 64,
-      "task": "parallel forward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 32,
-      "det_count": 64,
-      "task": "parallel backward",
-      "size": 64,
-      "num_angles": 64
-    },
-    {
-      "batch_size": 256,
-      "det_count": 384,
-      "task": "parallel forward",
-      "size": 384,
-      "num_angles": 384
-    },
-    {
       "batch_size": 256,
       "det_count": 128,
-      "task": "parallel forward",
-      "size": 128,
+      "source_distance": 128,
       "num_angles": 128
     },
     {
+      "size": 64,
+      "task": "parallel backward",
+      "batch_size": 256,
       "det_count": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 96,
+      "size": 96,
+      "det_spacing": 2.0,
+      "source_distance": 96,
+      "batch_size": 256,
+      "det_count": 96,
+      "num_angles": 96
+    },
+    {
+      "task": "parallel backward",
+      "size": 256,
+      "batch_size": 256,
+      "det_count": 256,
+      "num_angles": 256
+    },
+    {
+      "size": 64,
+      "batch_size": 96,
+      "det_count": 64,
+      "num_angles": 64,
+      "task": "parallel forward"
+    },
+    {
+      "size": 64,
+      "batch_size": 192,
+      "det_count": 64,
+      "num_angles": 64,
+      "task": "parallel forward"
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "batch_size": 96,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "batch_size": 64,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64,
+      "batch_size": 384
+    },
+    {
+      "det_count": 512,
+      "num_angles": 512,
+      "batch_size": 256,
+      "size": 512,
+      "task": "parallel forward"
+    },
+    {
+      "size": 64,
+      "batch_size": 64,
+      "det_count": 64,
+      "num_angles": 64,
+      "task": "parallel forward"
+    },
+    {
+      "size": 96,
+      "task": "parallel backward",
+      "batch_size": 256,
+      "det_count": 96,
+      "num_angles": 96
+    },
+    {
+      "size": 64,
+      "batch_size": 512,
+      "det_count": 64,
+      "num_angles": 64,
+      "task": "parallel forward"
+    },
+    {
+      "size": 64,
+      "batch_size": 256,
+      "det_count": 64,
+      "num_angles": 64,
+      "task": "parallel forward"
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64,
+      "batch_size": 512
+    },
+    {
+      "task": "fanbeam forward",
+      "det_count": 384,
+      "source_distance": 384,
+      "num_angles": 384,
+      "det_spacing": 2.0,
+      "detector_distance": 384,
+      "batch_size": 256,
+      "size": 384
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "batch_size": 192,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 96,
+      "size": 96,
+      "det_spacing": 2.0,
+      "source_distance": 96,
+      "batch_size": 256,
+      "det_count": 96,
+      "num_angles": 96
+    },
+    {
+      "size": 64,
+      "task": "parallel backward",
+      "det_count": 64,
+      "num_angles": 64,
+      "batch_size": 384
+    },
+    {
+      "det_count": 512,
+      "num_angles": 512,
+      "task": "parallel backward",
+      "batch_size": 256,
+      "size": 512
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "batch_size": 16,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "size": 256,
+      "batch_size": 256,
       "task": "parallel forward",
+      "det_count": 256,
+      "num_angles": 256
+    },
+    {
+      "size": 64,
+      "task": "parallel backward",
+      "batch_size": 96,
+      "det_count": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "batch_size": 128,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
       "batch_size": 4,
       "size": 64,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
       "num_angles": 64
+    },
+    {
+      "size": 64,
+      "batch_size": 32,
+      "det_count": 64,
+      "num_angles": 64,
+      "task": "parallel forward"
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 128,
+      "size": 128,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "det_count": 128,
+      "source_distance": 128,
+      "num_angles": 128
+    },
+    {
+      "det_count": 384,
+      "task": "fanbeam backward",
+      "source_distance": 384,
+      "num_angles": 384,
+      "det_spacing": 2.0,
+      "detector_distance": 384,
+      "batch_size": 256,
+      "size": 384
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "batch_size": 32,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam forward",
+      "det_count": 512,
+      "source_distance": 512,
+      "num_angles": 512,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "detector_distance": 512,
+      "size": 512
+    },
+    {
+      "batch_size": 4,
+      "size": 64,
+      "task": "parallel backward",
+      "det_count": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "batch_size": 192,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "size": 128,
+      "batch_size": 256,
+      "det_count": 128,
+      "num_angles": 128,
+      "task": "parallel forward"
+    },
+    {
+      "size": 32,
+      "batch_size": 256,
+      "det_count": 32,
+      "num_angles": 32,
+      "task": "parallel forward"
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 192,
+      "size": 192,
+      "source_distance": 192,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "det_count": 192,
+      "num_angles": 192
+    },
+    {
+      "task": "fanbeam forward",
+      "source_distance": 256,
+      "detector_distance": 256,
+      "size": 256,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "det_count": 256,
+      "num_angles": 256
+    },
+    {
+      "det_count": 384,
+      "num_angles": 384,
+      "task": "parallel backward",
+      "batch_size": 256,
+      "size": 384
+    },
+    {
+      "size": 64,
+      "batch_size": 16,
+      "det_count": 64,
+      "num_angles": 64,
+      "task": "parallel forward"
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 192,
+      "size": 192,
+      "source_distance": 192,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "det_count": 192,
+      "num_angles": 192
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "batch_size": 64,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64,
+      "batch_size": 384
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "batch_size": 16,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "batch_size": 96,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "size": 64,
+      "batch_size": 128,
+      "task": "parallel backward",
+      "det_count": 64,
+      "num_angles": 64
+    },
+    {
+      "size": 192,
+      "task": "parallel backward",
+      "batch_size": 256,
+      "det_count": 192,
+      "num_angles": 192
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 32,
+      "size": 32,
+      "det_spacing": 2.0,
+      "source_distance": 32,
+      "batch_size": 256,
+      "det_count": 32,
+      "num_angles": 32
+    },
+    {
+      "task": "fanbeam backward",
+      "detector_distance": 64,
+      "size": 64,
+      "batch_size": 32,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 32,
+      "size": 32,
+      "det_spacing": 2.0,
+      "source_distance": 32,
+      "batch_size": 256,
+      "det_count": 32,
+      "num_angles": 32
+    },
+    {
+      "size": 128,
+      "task": "parallel backward",
+      "batch_size": 256,
+      "det_count": 128,
+      "num_angles": 128
+    },
+    {
+      "det_count": 384,
+      "num_angles": 384,
+      "batch_size": 256,
+      "size": 384,
+      "task": "parallel forward"
+    },
+    {
+      "size": 64,
+      "batch_size": 16,
+      "task": "parallel backward",
+      "det_count": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam forward",
+      "detector_distance": 64,
+      "size": 64,
+      "det_spacing": 2.0,
+      "det_count": 64,
+      "source_distance": 64,
+      "num_angles": 64,
+      "batch_size": 512
+    },
+    {
+      "task": "fanbeam backward",
+      "source_distance": 256,
+      "detector_distance": 256,
+      "size": 256,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "det_count": 256,
+      "num_angles": 256
+    },
+    {
+      "size": 64,
+      "batch_size": 32,
+      "task": "parallel backward",
+      "det_count": 64,
+      "num_angles": 64
+    },
+    {
+      "task": "fanbeam backward",
+      "det_count": 512,
+      "source_distance": 512,
+      "num_angles": 512,
+      "det_spacing": 2.0,
+      "batch_size": 256,
+      "detector_distance": 512,
+      "size": 512
+    },
+    {
+      "size": 64,
+      "batch_size": 64,
+      "task": "parallel backward",
+      "det_count": 64,
+      "num_angles": 64
+    },
+    {
+      "size": 64,
+      "task": "parallel backward",
+      "det_count": 64,
+      "num_angles": 64,
+      "batch_size": 512
+    },
+    {
+      "batch_size": 4,
+      "size": 64,
+      "det_count": 64,
+      "num_angles": 64,
+      "task": "parallel forward"
     }
   ]
 }
