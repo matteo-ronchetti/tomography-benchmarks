@@ -97,7 +97,8 @@ def barplot(A, columns, groups, title="", spacing=0.1):
 
 
 def main():
-    gpu = 'GeForce GTX 1650'
+    # gpu = 'GeForce GTX 1650'
+    gpu = "Tesla T4"
     gpu_encoded = gpu.lower().replace(" ", "_")
 
     results = [json.load(open(p)) for p in glob.glob("results/*.json")]
@@ -105,11 +106,14 @@ def main():
 
     for res in results:
         lib = res["library"]
+        ggpu = res["gpu"] 
         for x in res["results"]:
             x["library"] = lib
             x["fps"] = x["batch_size"] / x["time"]
+            x["gpu"] = ggpu
             df.add(x)
 
+    df = df.select(gpu=gpu)
     tasks = ['parallel forward', 'parallel backward', 'fanbeam forward', 'fanbeam backward']
     libraries = sorted(df.unique("library"))
 
