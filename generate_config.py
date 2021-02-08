@@ -54,8 +54,8 @@ print(len(tasks))
 
 with open("config.json", "w") as f:
     json.dump({
-        "warmup": 25,
+        "warmup": 10,
         "min_repeats": 10,
-        "min_time": 5.0,
+        "min_time": 2.0,
         "tasks": tasks
     }, f, indent=2)
