@@ -116,13 +116,13 @@ def main():
     # summary barplot
     fps = np.zeros((len(libraries), len(tasks)))
     for i, task in enumerate(tasks):
-        fps[:, i] = df.select(task=task, batch_size=32, size=256).sort("library").project("fps")[0]
+        fps[:, i] = df.select(task=task, batch_size=256, size=256).sort("library").project("fps")[0]
     barplot(fps, libraries, tasks, title=gpu)
     plt.savefig(f"figures/{gpu_encoded}_barplot.png")
 
     
     # input size plots
-    batch_size = 32
+    batch_size = 256
     fig, axes = plt.subplots(2, 2, figsize=(15, 10))
     ax = axes.ravel()
 

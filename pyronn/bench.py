@@ -72,10 +72,10 @@ def create_parallel_geometry(size, det_count, num_angles):
     return geometry
 
 
-def create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist):
+def create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist, det_spacing):
     # Detector Parameters:
     detector_shape = det_count
-    detector_spacing = 1
+    detector_spacing = det_spacing
 
     # Trajectory Parameters:
     number_of_projections = num_angles
@@ -112,20 +112,20 @@ def bench_parallel_backward(batch, size, det_count, num_angles, *bench_args):
     return benchmark(f, sino, *bench_args)
 
 
-def bench_fanbeam_forward(batch, size, det_count, num_angles, source_dist, det_dist, *bench_args):
+def bench_fanbeam_forward(batch, size, det_count, num_angles, source_dist, det_dist, det_spacing, *bench_args):
     with tf.device('/GPU:0'):
         phantom = tf.random.normal((batch, size, size))
-    geometry = create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist)
+    geometry = create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist, det_spacing)
 
     def f(x): return fan_projection2d(x, geometry)
 
     return benchmark(f, phantom, *bench_args)
 
 
-def bench_fanbeam_backward(batch, size, det_count, num_angles, source_dist, det_dist, *bench_args):
+def bench_fanbeam_backward(batch, size, det_count, num_angles, source_dist, det_dist, det_spacing, *bench_args):
     with tf.device('/GPU:0'):
         phantom = tf.random.normal((batch, size, size))
-    geometry = create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist)
+    geometry = create_fanbeam_geometry(size, det_count, num_angles, source_dist, det_dist, det_spacing)
 
     sino = fan_projection2d(phantom, geometry)
     def f(x): return fan_backprojection2d(x, geometry)
@@ -162,12 +162,12 @@ for task in config["tasks"]:
     elif task["task"] == "fanbeam forward":
         exec_time = bench_fanbeam_forward(*bs,
                                           task["num_angles"], task["det_count"],
-                                          task["source_distance"], task["detector_distance"],
+                                          task["source_distance"], task["detector_distance"], task["det_spacing"],
                                           *bench_args)
     elif task["task"] == "fanbeam backward":
         exec_time = bench_fanbeam_backward(*bs,
                                            task["num_angles"], task["det_count"],
-                                           task["source_distance"], task["detector_distance"],
+                                           task["source_distance"], task["detector_distance"], task["det_spacing"],
                                            *bench_args)
     else:
         print(f"ERROR Unknown task '{task['task']}'")

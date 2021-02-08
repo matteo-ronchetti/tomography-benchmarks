@@ -80,10 +80,10 @@ class AstraParallelWrapper:
 
 
 class AstraFanbeamWrapper:
-    def __init__(self, angles, img_size, det_count, sdist, ddist):
+    def __init__(self, angles, img_size, det_count, sdist, ddist, det_spacing):
         self.angles = angles
         self.vol_geom = astra.create_vol_geom(img_size, img_size)
-        self.proj_geom = astra.create_proj_geom('fanflat', 1.0, det_count, self.angles, sdist, ddist)
+        self.proj_geom = astra.create_proj_geom('fanflat', det_spacing, det_count, self.angles, sdist, ddist)
         self.proj_id = astra.create_projector('cuda', self.proj_geom, self.vol_geom)
 
         self.data2d = []
@@ -135,22 +135,22 @@ def bench_parallel_backward(batch, size, det_count, num_angles, *bench_args):
 
 
 
-def bench_fanbeam_forward(batch, size, det_count, num_angles, source_dist, det_dist, *bench_args):
+def bench_fanbeam_forward(batch, size, det_count, num_angles, source_dist, det_dist, det_spacing, *bench_args):
     phantom = np.random.randn(batch, size, size)
     angles = np.linspace(0, np.pi, num_angles, endpoint=False)
 
-    radon = AstraFanbeamWrapper(angles, size, det_count, source_dist, det_dist)
+    radon = AstraFanbeamWrapper(angles, size, det_count, source_dist, det_dist, det_spacing)
     def f(x): return radon.forward(x)
     
     res = benchmark(f, phantom, *bench_args)
     radon.clean()
     return res
 
-def bench_fanbeam_backward(batch, size, det_count, num_angles, source_dist, det_dist, *bench_args):
+def bench_fanbeam_backward(batch, size, det_count, num_angles, source_dist, det_dist, det_spacing, *bench_args):
     phantom = np.random.randn(batch, size, size)
     angles = np.linspace(0, np.pi, num_angles, endpoint=False)
 
-    radon = AstraFanbeamWrapper(angles, size, det_count, source_dist, det_dist)
+    radon = AstraFanbeamWrapper(angles, size, det_count, source_dist, det_dist, det_spacing)
     def f(x): return radon.backward(x)
     
     res = benchmark(f, phantom, *bench_args)
@@ -182,12 +182,12 @@ for task in config["tasks"]:
     elif task["task"] == "fanbeam forward":
         exec_time = bench_fanbeam_forward(*bs,
                                           task["num_angles"], task["det_count"],
-                                          task["source_distance"], task["detector_distance"],
+                                          task["source_distance"], task["detector_distance"], task["det_spacing"],
                                           *bench_args)
     elif task["task"] == "fanbeam backward":
         exec_time = bench_fanbeam_backward(*bs,
                                            task["num_angles"], task["det_count"],
-                                           task["source_distance"], task["detector_distance"],
+                                           task["source_distance"], task["detector_distance"], task["det_spacing"],
                                            *bench_args)
     else:
         print(f"ERROR Unknown task '{task['task']}'")

@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import time
 import json
+from tqdm import tqdm
 
 from torch_radon import Radon, Projection
 # from torch_radon import Radon, RadonFanbeam
@@ -62,11 +63,12 @@ def bench_fanbeam_forward(task, dtype, device, *bench_args):
     det_count = task["det_count"]
     source_dist = task["source_distance"]
     det_dist = task["detector_distance"]
+    det_spacing = task["det_spacing"]
 
     x = torch.randn(task["batch_size"], task["size"], task["size"], dtype=dtype, device=device)
     angles = np.linspace(0, np.pi, num_angles, endpoint=False)
 
-    projection = Projection.fanbeam(source_dist, det_dist, det_count)
+    projection = Projection.fanbeam(source_dist, det_dist, det_count, det_spacing)
     radon = Radon(angles, task["size"], projection)
     # radon = RadonFanbeam(phantom.size(1), angles, source_dist, det_dist, det_count)
 
@@ -80,11 +82,12 @@ def bench_fanbeam_backward(task, dtype, device, *bench_args):
     det_count = task["det_count"]
     source_dist = task["source_distance"]
     det_dist = task["detector_distance"]
+    det_spacing = task["det_spacing"]
 
     x = torch.randn(task["batch_size"], task["size"], task["size"], dtype=dtype, device=device)
     angles = np.linspace(0, np.pi, num_angles, endpoint=False)
 
-    projection = Projection.fanbeam(source_dist, det_dist, det_count)
+    projection = Projection.fanbeam(source_dist, det_dist, det_count, det_spacing)
     radon = Radon(angles, task["size"], projection)
     # radon = RadonFanbeam(phantom.size(1), angles, source_dist, det_dist, det_count)
 
@@ -103,7 +106,7 @@ def do_benchmarks(config, dtype, device):
     bench_args = (warmup, min_repeats, min_time)
 
     results = []
-    for task in config["tasks"]:
+    for task in tqdm(config["tasks"]):
         print(f"Benchmarking task '{task['task']}', batch size: { task['batch_size']}, size: {task['size']}")
 
         if task["task"] == "parallel forward":
